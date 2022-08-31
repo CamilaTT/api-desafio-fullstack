@@ -1,7 +1,10 @@
 const vehicledataModel = require('../models/vehicledataModel')
+const addRequestHeader = require('../middleware/RequestHeader');
 
 module.exports = app => {
 
+    app.use(addRequestHeader);
+    
     app.get('/vehicledata', (req, res) => {
         let valor = ''
         if(req.query.valor) {

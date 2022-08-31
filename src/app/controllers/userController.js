@@ -1,7 +1,10 @@
 const userModel = require('../models/userModel');
 const checkToken = require('../middleware/auth');
+const addRequestHeader = require('../middleware/RequestHeader');
 
 module.exports = app => {
+    
+    app.use(addRequestHeader);
 
 //----------------------Public routes-----------------------
 

@@ -1,6 +1,9 @@
 const vehicleModel = require('../models/vehicleModel')
+const addRequestHeader = require('../middleware/RequestHeader');
 
 module.exports = app => {
+    
+    app.use(addRequestHeader);
    
     app.get('/vehicle', (req, res) => {
         vehicleModel.listVehicles(res)
