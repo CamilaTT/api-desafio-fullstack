@@ -35,7 +35,7 @@ class userTable {
         const INSERT_USER = `
             INSERT INTO USER (userName, email, password, fullName, terms) 
                 SELECT '${userName}', '${email}', '${passwordHash}', '${fullName}', ${terms}           
-            )`
+            `
         
         this.dbConnection.query(INSERT_USER, error => {
             if(error) console.log(error)

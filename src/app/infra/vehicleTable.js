@@ -32,7 +32,7 @@ class vehicleTable {
 		const INSERT_VEHICLE = `
             INSERT INTO VEHICLE (vehicle, totalSales, connected, softwareUpdates) 
                 SELECT '${vehicle}', ${totalSales}, ${connected}, ${softwareUpdates} 
-            )`
+            `
 
 		this.dbConnection.query(INSERT_VEHICLE, error => {
             if(error) console.log(error)
