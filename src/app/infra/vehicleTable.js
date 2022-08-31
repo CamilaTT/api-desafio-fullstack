@@ -32,7 +32,6 @@ class vehicleTable {
 		const INSERT_VEHICLE = `
             INSERT INTO VEHICLE (vehicle, totalSales, connected, softwareUpdates) 
                 SELECT '${vehicle}', ${totalSales}, ${connected}, ${softwareUpdates} 
-                WHERE NOT EXISTS (SELECT * FROM VEHICLE WHERE vehicle = '${vehicle}'
             )`
 
 		this.dbConnection.query(INSERT_VEHICLE, error => {

@@ -34,8 +34,7 @@ class userTable {
         const passwordHash = await bcrypt.hash(password, salt)
         const INSERT_USER = `
             INSERT INTO USER (userName, email, password, fullName, terms) 
-                SELECT '${userName}', '${email}', '${passwordHash}', '${fullName}', ${terms} 
-                WHERE NOT EXISTS (SELECT * FROM USER WHERE userName ='${userName}'            
+                SELECT '${userName}', '${email}', '${passwordHash}', '${fullName}', ${terms}           
             )`
         
         this.dbConnection.query(INSERT_USER, error => {

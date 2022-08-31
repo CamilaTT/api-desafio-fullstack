@@ -69,7 +69,7 @@ class vehicleDataTable {
                 lat,
                 _long
             ) SELECT '${vin}', '${odometer}', '${tirePressure}', '${status}', '${batteryStatus}', '${fuelLevel}', 
-                '${lat}', '${_long}' WHERE NOT EXISTS (SELECT * FROM VEHICLEDATA WHERE vin = '${vin}')`
+                '${lat}', '${_long}'`
 
         this.dbConnection.query(INSERT_VEHICLEDATA, error => {
             if(error) console.log(error)
