@@ -11,13 +11,13 @@ class vehicleDataTable {
             CREATE TABLE IF NOT EXISTS VEHICLEDATA (
                 id INT PRIMARY KEY AUTO_INCREMENT,
                 vin VARCHAR(20) NOT NULL UNIQUE, 
-                odometer VARCHAR(10) DEFAULT ('') NOT NULL, 
-                tirePressure VARCHAR(30) DEFAULT ('') NOT NULL,
-                status VARCHAR(10) DEFAULT ('') NOT NULL,
-                batteryStatus VARCHAR(10) DEFAULT ('') NOT NULL,
-                fuelLevel VARCHAR(10) DEFAULT ('') NOT NULL,
-                lat VARCHAR(10) DEFAULT ('') NOT NULL,
-                _long VARCHAR(10) DEFAULT ('') NOT NULL
+                odometer VARCHAR(10) NOT NULL, 
+                tirePressure VARCHAR(30) NOT NULL,
+                status VARCHAR(10) NOT NULL,
+                batteryStatus VARCHAR(10) NOT NULL,
+                fuelLevel VARCHAR(10) NOT NULL,
+                lat VARCHAR(10) NOT NULL,
+                _long VARCHAR(10) NOT NULL
             );`
 
         this.dbConnection.query(VEHICLEDATA_TABLE, error => {
