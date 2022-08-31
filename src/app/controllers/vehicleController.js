@@ -1,5 +1,5 @@
 const vehicleModel = require('../models/vehicleModel')
-const addRequestHeader = require('../middleware/RequestHeader');
+const addRequestHeader = require('../middleware/requestHeader');
 
 module.exports = app => {
     

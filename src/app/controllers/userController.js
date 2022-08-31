@@ -1,6 +1,6 @@
 const userModel = require('../models/userModel');
 const checkToken = require('../middleware/auth');
-const addRequestHeader = require('../middleware/RequestHeader');
+const addRequestHeader = require('../middleware/requestHeader');
 
 module.exports = app => {
     
