@@ -10,7 +10,7 @@ class vehicleTable {
         const VEHICLE_TABLE = `
             CREATE TABLE IF NOT EXISTS VEHICLE (
                 id INT PRIMARY KEY AUTO_INCREMENT,
-                vehicle TEXT NOT NULL, 
+                vehicle TEXT NOT NULL UNIQUE,
                 totalSales INT,
                 connected INT,
                 softwareUpdates INT
