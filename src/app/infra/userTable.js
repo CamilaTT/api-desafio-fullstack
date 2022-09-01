@@ -10,7 +10,7 @@ class userTable {
 
     createTable() {
         const USER_TABLE = `
-                CREATE TABLE IF NOT EXISTS USER (id INT PRIMARY KEY AUTO_INCREMENT,
+                CREATE TABLE IF NOT EXISTS USER (id INT PRIMARY KEY AUTO_INCREMENT, 
                     userName VARCHAR(30) NOT NULL UNIQUE, 
                     email VARCHAR(50) NOT NULL, 
                     password VARCHAR(200) NOT NULL, 
@@ -34,8 +34,9 @@ class userTable {
         const passwordHash = await bcrypt.hash(password, salt)
         const INSERT_USER = `
             INSERT INTO USER (userName, email, password, fullName, terms) 
-                SELECT '${userName}', '${email}', '${passwordHash}', '${fullName}', ${terms}           
-            `
+                SELECT '${userName}', '${email}', '${passwordHash}', '${fullName}', ${terms} 
+                WHERE NOT EXISTS (SELECT * FROM USER WHERE userName ='${userName}'            
+            )`
         
         this.dbConnection.query(INSERT_USER, error => {
             if(error) console.log(error)

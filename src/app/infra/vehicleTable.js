@@ -10,7 +10,7 @@ class vehicleTable {
         const VEHICLE_TABLE = `
             CREATE TABLE IF NOT EXISTS VEHICLE (
                 id INT PRIMARY KEY AUTO_INCREMENT,
-                vehicle VARCHAR(20) NOT NULL UNIQUE,
+                vehicle TEXT NOT NULL UNIQUE, 
                 totalSales INT,
                 connected INT,
                 softwareUpdates INT
@@ -26,13 +26,16 @@ class vehicleTable {
 		this.insertVehicle('Mustang', 1500, 500, 750);
 		this.insertVehicle('Territory', 4560, 4000, 3050);
 		this.insertVehicle('Bronco Sport', 7560, 4060, 2050);
+        this.insertVehicle('Fusion', 29000, 20000, 17000);
+        this.insertVehicle('Maverick', 40000, 30000, 28150);
     }
 
     insertVehicle(vehicle, totalSales, connected, softwareUpdates) {
 		const INSERT_VEHICLE = `
             INSERT INTO VEHICLE (vehicle, totalSales, connected, softwareUpdates) 
                 SELECT '${vehicle}', ${totalSales}, ${connected}, ${softwareUpdates} 
-            `
+                WHERE NOT EXISTS (SELECT * FROM VEHICLE WHERE vehicle = '${vehicle}'
+            )`
 
 		this.dbConnection.query(INSERT_VEHICLE, error => {
             if(error) console.log(error)
