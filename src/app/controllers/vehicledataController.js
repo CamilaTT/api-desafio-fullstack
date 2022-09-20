@@ -6,11 +6,11 @@ module.exports = app => {
     app.use(addRequestHeader);
     
     app.get('/vehicledata', (req, res) => {
-        let valor = ''
-        if(req.query.valor) {
-            valor = req.query.valor
+        let value = ''
+        if(req.query.value) {
+            value = req.query.value
         }
-        vehicledataModel.listVehicleData(valor, res)
+        vehicledataModel.listVehicleData(value, res)
     })
 
     app.get('/vehicledata/:id', (req, res) => {

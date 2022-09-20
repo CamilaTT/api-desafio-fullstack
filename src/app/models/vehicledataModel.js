@@ -2,11 +2,11 @@ const dbConnection = require('../infra/connection');
 
 class VehicledataModel {
 
-    listVehicleData(valor, res) {
+    listVehicleData(value, res) {
 
         const selectByVin = `
             SELECT id, vin, odometer, tirePressure, status, batteryStatus, fuelLevel,
-            lat, _long FROM VEHICLEDATA WHERE vin LIKE '%${valor}%'`
+            lat, _long FROM VEHICLEDATA WHERE vin LIKE '%${value}%'`
 
         dbConnection.query(selectByVin, (error, results) => {
 
