@@ -1,10 +1,8 @@
 const userModel = require('../models/userModel');
 const checkToken = require('../middleware/auth');
-const addRequestHeader = require('../middleware/requestHeader');
+const requestHeader = require('../middleware/requestHeader');
 
 module.exports = app => {
-    
-    app.use(addRequestHeader);
 
 //----------------------Public routes-----------------------
 
@@ -20,18 +18,18 @@ module.exports = app => {
 
 //----------------------Private routes----------------------
 
-  app.get('/user/:id', checkToken, async (req, res) => {
+  app.get('/user/:id', requestHeader, checkToken, async (req, res) => {
     const id = parseInt(req.params.id)
     userModel.getUserById(id, res)    
   })
 
-  app.patch('/user/:id', checkToken, (req, res) => {
+  app.patch('/user/:id', requestHeader, checkToken, (req, res) => {
       const id = parseInt(req.params.id)
       const values = req.body 
       userModel.updateUser(id, values, res)
   })
 
-  app.delete('/user/:id', checkToken, (req, res) => {
+  app.delete('/user/:id', requestHeader, checkToken, (req, res) => {
       const id = parseInt(req.params.id)
       userModel.deleteUser(id, res)
   }) 
