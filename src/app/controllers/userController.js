@@ -1,12 +1,13 @@
 const userModel = require('../models/userModel');
 const checkToken = require('../middleware/auth');
 const requestHeader = require('../middleware/requestHeader');
+const cors = require('cors')
 
 module.exports = app => {
 
 //----------------------Public routes-----------------------
 
-  app.post('/user/login', requestHeader, (req, res) => {
+  app.post('/user/login', cors(), (req, res) => {
     const user = req.body 
     userModel.login(user, res)
   })
