@@ -8,12 +8,12 @@ module.exports = app => {
 
 //----------------------Public routes-----------------------
 
-  app.post('/user/login', (req, res) => {
+  app.post('/user/login', addRequestHeader, (req, res) => {
     const user = req.body 
     userModel.login(user, res)
   })
   
-  app.post('/user/signup', (req, res) => {
+  app.post('/user/signup', addRequestHeader, (req, res) => {
     const user = req.body
     userModel.registerUser(user, res)
   })
