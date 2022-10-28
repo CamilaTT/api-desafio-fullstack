@@ -6,12 +6,12 @@ module.exports = app => {
 
 //----------------------Public routes-----------------------
 
-  app.post('/user/login', addRequestHeader, (req, res) => {
+  app.post('/user/login', requestHeader, (req, res) => {
     const user = req.body 
     userModel.login(user, res)
   })
   
-  app.post('/user/signup', addRequestHeader, (req, res) => {
+  app.post('/user/signup', requestHeader, (req, res) => {
     const user = req.body
     userModel.registerUser(user, res)
   })
